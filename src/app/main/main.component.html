@@ -1,0 +1,240 @@
+<div class="window-wrapper">
+  <div class="window-title">
+    <!-- <div class="dots">
+      <i class="fa fa-circle"></i>
+      <i class="fa fa-circle"></i>
+      <i class="fa fa-circle"></i>
+    </div> -->
+    <div class="title">
+      <span>Sasi Chat Room</span>
+    </div>
+    <!-- <div class="expand">
+      <i class="fa fa-expand"></i>
+    </div> -->
+    <div class="logout">
+      <button mat-icon-button (click)="onLogoutClick()">
+        <mat-icon>
+          exit_to_app
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="window-area">
+    <div class="conversation-list">
+      <ul class="">
+        <li class="item newroom">
+          <a [routerLink]="" (click)="newRoom()">
+            <span>New Room</span>
+          </a>
+        </li>
+        @for (room of roomList; track room; let  i = $index) {
+        <li class="item {{ roomId == room._id ? 'active' : '' }}">
+          <a [routerLink]="" (click)="onRoomSelect( room._id )">
+            <!-- <i class="fa fa-list-alt"></i> -->
+            <span>{{ room.name }}</span>
+          </a>
+        </li>
+        }
+        <!-- <li class="item"><a href="#"><i class="fa fa-list-alt"></i><span>Dashboard</span></a></li>
+        <li class="item active"><a href="#"><i class="fa fa-user"></i><span>Team chat</span><i class="fa fa-times"></i></a></li>
+        <li><a href="#"><i class="fa fa-circle-o online"></i><span>Cucu Ionel</span><i class="fa fa-times"></i></a></li>
+        <li><a href="#"><i class="fa fa-circle-o idle"></i><span>Jan Dvořák</span><i class="fa fa-times"></i></a></li>
+        <li><a href="#"><i class="fa fa-circle-o offline"></i><span>Clark Kent</span><i class="fa fa-times"></i></a></li>
+        <li><a href="#"><i class="fa fa-circle-o offline"></i><span>Ioana Marcu</span><i class="fa fa-times"></i></a></li> -->
+      </ul>
+      <!-- <div class="my-account">
+        <div class="image">
+          <img src="https://secure.gravatar.com/avatar/de76e03aa6b5b0bf675c1e8a990da52f?s=64">
+          <i class="fa fa-circle online"></i>
+        </div>
+        <div class="name">
+          <span>Cucu Ionel</span>
+          <i class="fa fa-angle-down"></i>
+          <span class="availability">Available</span>
+        </div>
+
+      </div> -->
+    </div>
+    <div class="chat-area">
+      <div class="title">
+        <b id="room-description">{{ roomDescription }}</b>
+        <!-- <i class="fa fa-search"></i> -->
+      </div>
+      <div class="chat-list">
+        <ul>
+          @for (chat of selectChat; track chat; let  i = $index) {
+            <!-- <li>
+                {{i+1}} {{item}}
+            </li> -->
+            <li class="">
+              <div class="name">
+                <span class="">{{ chat.userId.username }}</span>
+              </div>
+              <div class="message">
+                <p>{{ chat.content }}</p>
+                <span class="msg-time">{{ chat.createdAt | date: 'dd-MM-yy h:mm:a' }}</span>
+              </div>
+            </li>
+            }
+          <!-- <li class="me">
+            <div class="name">
+              <span class="">Cucu Ionel</span>
+            </div>
+            <div class="message">
+              <p>Hey, do you like the new interface? It's done with Font Awesome.</p>
+              <span class="msg-time">5:00 pm</span>
+            </div>
+          </li>
+          <li class="">
+            <div class="name">
+              <span class="">Christian Smith</span>
+            </div>
+            <div class="message">
+              <p><span class="blue-label">Cucu Ionel</span> I see what you did there.</p>
+              <span class="msg-time">5:01 pm</span>
+            </div>
+          </li>
+          <li class="me">
+            <div class="name">
+              <span class="">Cucu Ionel</span>
+            </div>
+            <div class="message">
+              <p>Feel free to look at the code if you want.</p>
+              <span class="msg-time">5:02 pm</span>
+            </div>
+          </li>
+          <li class="">
+            <div class="name">
+              <span class="">Christian Smith</span>
+            </div>
+            <div class="message">
+              <p>Yeah, will do.</p>
+              <span class="msg-time">5:04 pm</span>
+            </div>
+          </li>
+          <li class="me">
+            <div class="name">
+              <span class="">Cucu Ionel</span>
+            </div>
+            <div class="message">
+              <p>This is an example text reply.</p>
+              <span class="msg-time">5:04 pm</span>
+            </div>
+          </li>
+          <li class="">
+            <div class="name">
+              <span class="">Christian Smith</span>
+            </div>
+            <div class="message">
+              <p>I know, put some more.</p>
+              <span class="msg-time">5:06 pm</span>
+            </div>
+          </li>
+          <li class="me">
+            <div class="name">
+              <span class="">Cucu Ionel</span>
+            </div>
+            <div class="message">
+              <p>Here is another line.</p>
+              <span class="msg-time">5:06 pm</span>
+            </div>
+          </li>
+          <li class="">
+            <div class="name">
+              <span class="">Christian Smith</span>
+            </div>
+            <div class="message">
+              <p>Yeah, will do.</p>
+              <span class="msg-time">5:04 pm</span>
+            </div>
+          </li>
+          <li class="me">
+            <div class="name">
+              <span class="">Cucu Ionel</span>
+            </div>
+            <div class="message">
+              <p>Feel free to look at the code if you want.</p>
+              <span class="msg-time">5:02 pm</span>
+            </div>
+          </li>
+          <li class="">
+            <div class="name">
+              <span class="">Christian Smith</span>
+            </div>
+            <div class="message">
+              <p>Yeah, will do.</p>
+              <span class="msg-time">5:04 pm</span>
+            </div>
+          </li>
+          <li class="me">
+            <div class="name">
+              <span class="">Cucu Ionel</span>
+            </div>
+            <div class="message">
+              <p>Feel free to look at the code if you want.</p>
+              <span class="msg-time">5:02 pm</span>
+            </div>
+          </li>
+          <li class="">
+            <div class="name">
+              <span class="">Christian Smith</span>
+            </div>
+            <div class="message">
+              <p>Yeah, will do.</p>
+              <span class="msg-time">5:04 pm</span>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+      <div class="input-area">
+        <div class="input-wrapper">
+          <input [(ngModel)]="message" (keydown.enter)="sendMessage()" type="text">
+          <!-- <input type="text" value="">
+          <i class="fa fa-smile-o"></i>
+          <i class="fa fa-paperclip"></i> -->
+        </div>
+        <!-- <button class="send-btn" (click)="sendMessage()">Send</button> -->
+        <input type="button" value="Send" class="send-btn" (click)="sendMessage()">
+      </div>
+    </div>
+    <div class="right-tabs">
+      <!-- <ul class="tabs">
+        <li class="active">
+          <a href="#"><i class="fa fa-users"></i></a>
+        </li>
+        <li><a href="#"><i class="fa fa-paperclip"></i></a></li>
+        <li><a href="#"><i class="fa fa-link"></i></a></li>
+      </ul> -->
+      <ul class="tabs-container">
+        <li class="active">
+          <ul class="member-list">
+          @for (user of userList; track user; let  i = $index) {
+            <li>
+              <!-- <span class="status online">
+                <i class="fa fa-circle-o"></i>
+              </span> -->
+              <div *ngIf="user.isActive;else offline">
+                <mat-icon class="user-list bg-success" id="user-list-{{ user._id }}" aria-hidden="false" aria-label="Online" fontIcon="airplanemode_active"></mat-icon>
+              </div>
+              <ng-template #offline>
+                <mat-icon class="user-list bg-danger" id="user-list-{{ user._id }}" aria-hidden="false" aria-label="Offline" fontIcon="airplanemode_inactive"></mat-icon>
+              </ng-template>
+              <span>{{ user.username }}</span>
+              <!-- <sup>online</sup> -->
+            </li>
+          }
+            <!-- <li><span class="status online"><i class="fa fa-circle-o"></i></span><span>Cucu Ionel</span></li>
+            <li><span class="status online"><i class="fa fa-circle-o"></i></span><span>Christian Smith</span></li>
+            <li><span class="status idle"><i class="fa fa-circle-o"></i></span><span>John Bradley</span><span class="time">10:45 pm</span></li>
+            <li><span class="status offline"><i class="fa fa-circle-o"></i></span><span>Daniel Freitz</span></li> -->
+          </ul>
+        </li>
+        <!-- <li></li>
+        <li></li> -->
+      </ul>
+      <!-- <i class="fa fa-cog"></i> -->
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

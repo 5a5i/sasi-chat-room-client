@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>New Room</h1>
+<div mat-dialog-content>
+  <!-- <p>What's your favorite animal?</p> -->
+  <div>
+    <mat-form-field>
+      <!-- <input matInput [(ngModel)]="roomdata.animal"> -->
+      <input matInput [(ngModel)]="roomdata.name" placeholder="Room Name" type="text" name="name" required="">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="roomdata.description" placeholder="Room Description" type="text" name="description">
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="createRoom()">Create</button>
+  <!-- <button mat-button [mat-dialog-close]="roomdata.animal" cdkFocusInitial>Create</button> -->
+</div>
